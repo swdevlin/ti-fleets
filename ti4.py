@@ -18,6 +18,7 @@ parser.add_argument("-ca", "--carrier", help="carrier are tech 2", action=tech2,
 parser.add_argument("-cr", "--cruiser", help="cruisers are tech 2", action=tech2, default=1)
 parser.add_argument("-w", "--warsun", help="destroyers are tech 2, only relevant for muaat", action=tech2, default=1)
 parser.add_argument("-dr", "--dreadnought", help="dreadnoughts are tech 2", action=tech2, default=1)
+parser.add_argument("--debug", help="debug mode", action="store_true")
 args = parser.parse_args()
 
 race = ''
@@ -29,7 +30,7 @@ destroyer = Destroyer(race=race, tech=args.destroyer)
 carrier = Carrier(race=race, tech=args.carrier)
 fighter = Fighter(race=race, tech=args.fighter)
 
-source = [
+available_untis = [
 	flagship,
 	warsun, warsun,
 	dreadnought, dreadnought, dreadnought, dreadnought, dreadnought,
@@ -76,9 +77,10 @@ def fleet_dump(fleet, fighter_capacity=0):
 	return ','.join(['.'.join(ships), cost, hits, hits / cost, resilience])
 
 
-for _ in range(len(source) + 1):
-	print('computing', _)
-	pool = source[_:]
+for _ in range(len(available_untis) + 1):
+	if args.debug:
+		print('computing', _)
+	pool = available_untis[_:]
 	if len(pool) >= args.size:
 		add_ship([], pool)
 
