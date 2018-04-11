@@ -31,6 +31,7 @@ parser.add_argument("-cr", "--cruiser", help="cruisers are tech 2", action=tech2
 parser.add_argument("-w", "--warsun", help="destroyers are tech 2, only relevant for muaat", action=tech2, default=1)
 parser.add_argument("-dr", "--dreadnought", help="dreadnoughts are tech 2", action=tech2, default=1)
 parser.add_argument("--debug", help="debug mode", action="store_true")
+parser.add_argument("--all", help="Generate fleet sizes 1-10, with 0,25,50,75,100% fighters", action="store_true")
 args = parser.parse_args()
 
 flagship = Flagship(race=args.race, tech=1)

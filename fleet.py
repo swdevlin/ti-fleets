@@ -92,7 +92,7 @@ class Dreadnought(Ship):
 class Cruiser(Ship):
 	def __init__(self, race='', tech=1):
 		if tech == 2:
-			super().__init__(self.__class__.__name__, cost=4, hit_on=6, capacity=1, rolls=1, sustain=0)
+			super().__init__(self.__class__.__name__, cost=2, hit_on=6, capacity=1, rolls=1, sustain=0)
 		else:
 			super().__init__(self.__class__.__name__, cost=2, hit_on=7, capacity=0, rolls=1, sustain=0)
 
